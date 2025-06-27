@@ -8,10 +8,10 @@ body {
 
 .juego {
   background-color: white;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  max-width: 400px;
+  max-width: 500px;
   margin: auto;
   transition: transform 0.3s;
 }
@@ -26,7 +26,7 @@ input[type="number"] {
   border: 2px solid #ff90b3;
   border-radius: 10px;
   margin-right: 1rem;
-  width: 140px;
+  width: 145px;
 }
 
 button {
