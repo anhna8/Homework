@@ -2,7 +2,7 @@ import { useState } from 'react';
 import InputNumber from './inputNumber';
 import Message from './message';
 import RestartButton from './restartButton';
-import './App.css';
+import '../App.css';
 
 
 function Game() {
@@ -36,7 +36,7 @@ function Game() {
 
   return (
     <div className="juego">
-      <h1>Adivina el Número 🎲</h1>
+      <h1>Adivina el Número del 1-100</h1>
       <InputNumber intento={intento} setIntento={setIntento} onCheck={verificarNumero} disabled={ganaste} />
       <Message mensaje={mensaje} />
       {ganaste && <RestartButton onRestart={reiniciar} />}
