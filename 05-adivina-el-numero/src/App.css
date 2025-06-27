@@ -1,0 +1,50 @@
+body {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  padding: 3rem;
+  color: #333;
+}
+
+.juego {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  margin: auto;
+  transition: transform 0.3s;
+}
+
+.juego:hover {
+  transform: scale(1.02);
+}
+
+input[type="number"] {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 2px solid #ff90b3;
+  border-radius: 10px;
+  margin-right: 1rem;
+  width: 140px;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: #ff90b3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff70a6;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+}
