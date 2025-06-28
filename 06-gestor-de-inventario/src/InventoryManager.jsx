@@ -1,5 +1,5 @@
 import { useState, useReducer, useRef, useCallback } from "react";
-import './tienda-cute.css';
+import './App.css';
 
 
 const initialState = { products: [] };

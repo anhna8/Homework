@@ -1,11 +1,8 @@
-import './App.css'
+import InventoryManager from './InventoryManager';
+import './App.css';
 
 function App() {
-  return (
-    <>
-     
-    </>
-  )
+  return <InventoryManager />;
 }
 
-export default App
+export default App;
