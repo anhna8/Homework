@@ -59,33 +59,33 @@ function InventoryManager() {
   );
 
   return (
-    <div>
-      <h2>Gestor de Inventario</h2>
-      <input ref={inputRef} type="text" placeholder="Nombre del producto" />
-      <button onClick={handleAddProduct}>Agregar Producto</button>
+  <div className="inventory-container">
+    <h2>Gestor de Inventario</h2>
+    <input ref={inputRef} type="text" placeholder="Nombre del producto" />
+    <button onClick={handleAddProduct}>Agregar Producto</button>
 
-      <input
-        type="text"
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-        placeholder="Buscar producto..."
-        style={{ marginTop: "1rem" }}
-      />
+    <input
+      type="text"
+      value={busqueda}
+      onChange={(e) => setBusqueda(e.target.value)}
+      placeholder="Buscar producto..."
+    />
 
-      <ul>
-        {productosFiltrados.map((product) => (
-          <li key={product.id}>
-            {product.name} - Cantidad: {product.quantity}
+    <ul>
+      {productosFiltrados.map((product) => (
+        <li key={product.id}>
+          <span>{product.name} - Cantidad: {product.quantity}</span>
+          <div>
             <button onClick={() => handleIncrement(product.id)}>+</button>
             <button onClick={() => handleDecrement(product.id)}>-</button>
             <button onClick={() => dispatch({ type: "remove", id: product.id })}>
               Eliminar
             </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 }
-
 export default InventoryManager;
