@@ -1,33 +1,32 @@
-import { useReducer, useRef, useCallback } from "react";
+import { useState, useReducer, useRef, useCallback } from "react";
 
 const initialState = { products: [] };
 
 function reducer(state, action) {
   switch (action.type) {
     case "add":
-      return { 
-        products: [...state.products, { 
-          id: Date.now(), 
-          name: action.name, 
-          quantity: 1 
-        }] 
+      return {
+        products: [
+          ...state.products,
+          { id: Date.now(), name: action.name, quantity: 1 },
+        ],
       };
     case "increment":
-      return { 
-        products: state.products.map(p =>
+      return {
+        products: state.products.map((p) =>
           p.id === action.id ? { ...p, quantity: p.quantity + 1 } : p
-        ) 
+        ),
       };
     case "decrement":
-      return { 
-        products: state.products.map(p =>
-          p.id === action.id && p.quantity > 1 ? { ...p, quantity: p.quantity - 1 } : p
-        ) 
+      return {
+        products: state.products.map((p) =>
+          p.id === action.id && p.quantity > 1
+            ? { ...p, quantity: p.quantity - 1 }
+            : p
+        ),
       };
     case "remove":
-      return { 
-        products: state.products.filter(p => p.id !== action.id) 
-      };
+      return { products: state.products.filter((p) => p.id !== action.id) };
     default:
       return state;
   }
@@ -36,13 +35,26 @@ function reducer(state, action) {
 function InventoryManager() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const inputRef = useRef(null);
+  const [busqueda, setBusqueda] = useState("");
 
   const handleAddProduct = () => {
     if (inputRef.current.value.trim() !== "") {
       dispatch({ type: "add", name: inputRef.current.value });
-      inputRef.current.value = ""; // Limpiar input
+      inputRef.current.value = "";
     }
   };
+
+  const handleIncrement = useCallback((id) => {
+    dispatch({ type: "increment", id });
+  }, []);
+
+  const handleDecrement = useCallback((id) => {
+    dispatch({ type: "decrement", id });
+  }, []);
+
+  const productosFiltrados = state.products.filter((product) =>
+    product.name.toLowerCase().includes(busqueda.toLowerCase())
+  );
 
   return (
     <div>
@@ -50,13 +62,23 @@ function InventoryManager() {
       <input ref={inputRef} type="text" placeholder="Nombre del producto" />
       <button onClick={handleAddProduct}>Agregar Producto</button>
 
+      <input
+        type="text"
+        value={busqueda}
+        onChange={(e) => setBusqueda(e.target.value)}
+        placeholder="Buscar producto..."
+        style={{ marginTop: "1rem" }}
+      />
+
       <ul>
-        {state.products.map((product) => (
+        {productosFiltrados.map((product) => (
           <li key={product.id}>
             {product.name} - Cantidad: {product.quantity}
-            <button onClick={() => dispatch({ type: "increment", id: product.id })}>+</button>
-            <button onClick={() => dispatch({ type: "decrement", id: product.id })}>-</button>
-            <button onClick={() => dispatch({ type: "remove", id: product.id })}>Eliminar</button>
+            <button onClick={() => handleIncrement(product.id)}>+</button>
+            <button onClick={() => handleDecrement(product.id)}>-</button>
+            <button onClick={() => dispatch({ type: "remove", id: product.id })}>
+              Eliminar
+            </button>
           </li>
         ))}
       </ul>
@@ -64,13 +86,4 @@ function InventoryManager() {
   );
 }
 
-const handleIncrement = useCallback((id) => {
-  dispatch({ type: "increment", id });
-}, []);
-
-const handleDecrement = useCallback((id) => {
-  dispatch({ type: "decrement", id });
-}, []);
-
-<button onClick={() => handleIncrement(product.id)}>+</button>
-<button onClick={() => handleDecrement(product.id)}>-</button>
+export default InventoryManager;
