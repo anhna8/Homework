@@ -1,97 +1,91 @@
-/* Estilo general */
-body {
+/* Reset básico */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Cuerpo de la app */
+body {
   font-family: 'Segoe UI', sans-serif;
-  background: #e1f5fe;
-  color: #263238;
+  background-color: #f0f8ff;
+  color: #15202b;
 }
 
 /* Contenedor principal */
 .app {
   max-width: 600px;
   margin: 2rem auto;
-  background: #ffffff;
+  background-color: #ffffff;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Encabezados */
+/* Encabezado */
 h1, h2 {
-  color: #0288d1;
+  color: #1da1f2;
+  margin-bottom: 1.2rem;
   text-align: center;
 }
 
-/* Navegación */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+/* Sección del usuario */
+.home-user {
+  background-color: #e8f5fe;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-nav a {
-  text-decoration: none;
-  color: #01579b;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  background-color: #b3e5fc;
-  transition: background-color 0.3s ease;
-}
-
-nav a:hover {
-  background-color: #81d4fa;
-}
-
-/* Formularios */
+/* Formulario de login */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
-input[type="text"],
-input[type="password"] {
-  padding: 0.8rem;
+input[type="text"] {
+  padding: 0.8rem 1rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
 }
 
 button {
   padding: 0.8rem;
-  background-color: #0288d1;
-  color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  background-color: #1da1f2;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
-  background-color: #0277bd;
+  background-color: #1a91da;
 }
 
-/* Mensajes */
-.message {
-  text-align: center;
-  color: #006064;
-  margin-top: 1rem;
+/* Barra de navegación */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .app {
-    margin: 1rem;
-    padding: 1.2rem;
-  }
+nav a {
+  color: #1da1f2;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #e1f5fe;
+  transition: background-color 0.2s ease;
+}
 
-  nav {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
+nav a:hover {
+  background-color: #cce4f6;
 }
