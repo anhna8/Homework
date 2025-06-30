@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
+mport Navbar from './components/Navbar';
 import './App.css';
 
 
@@ -22,21 +23,6 @@ const App = () => {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
   };
-
-
-
-<nav>
-  {user ? (
-    <>
-      <Link to="/">Inicio</Link>
-      <Link to="/profile">Perfil</Link>
-      <button onClick={logout}>Cerrar sesión</button>
-    </>
-  ) : (
-    <Link to="/login">Iniciar sesión</Link>
-  )}
-</nav>
-
 
 
   const logout = () => {
